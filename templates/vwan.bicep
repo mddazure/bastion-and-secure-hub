@@ -47,6 +47,7 @@ resource hub1 'Microsoft.Network/virtualHubs@2021-08-01' = {
   name: 'hub1'
   location: location
   properties: {
+    virtualRouterAsn: 64000
     addressPrefix: hub1range
     virtualWan: {
       id: vwan.id
