@@ -25,6 +25,9 @@ resource defsubnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01'={
 resource bassubnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01'={
   parent: spoke
   name: 'AzureBastionSubnet'
+  dependsOn:[
+    defsubnet
+  ]
   properties:{
     addressPrefix: bassubrange
   }
