@@ -65,7 +65,7 @@ module spoke1 'spoke.bicep' = {
   }
 }
 
-module bastion0 'bastion.bicep' = {
+/*module bastion0 'bastion.bicep' = {
   name: 'bastion0'
   scope: vwantestRg
   params: {
@@ -76,4 +76,4 @@ module bastion0 'bastion.bicep' = {
     privateip: false
     bassubnetid: spoke0.outputs.bassubnetid
   }
-}
+}*/
