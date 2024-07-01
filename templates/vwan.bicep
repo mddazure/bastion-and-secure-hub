@@ -41,7 +41,17 @@ resource spoke0hub0 'Microsoft.Network/virtualHubs/hubVirtualNetworkConnections@
     enableInternetSecurity: true
   }
 }
-
+resource hub0ri 'Microsoft.Network/virtualHubs/routingIntent@2023-09-01' ={
+  parent: hub0
+  name: 'hub0ri'
+  properties: {
+    routingPolicies: [
+      {
+        
+      }
+    ]
+  }
+}
 
 resource hub1 'Microsoft.Network/virtualHubs@2021-08-01' = {
   name: 'hub1'
