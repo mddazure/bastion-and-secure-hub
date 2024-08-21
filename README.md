@@ -14,7 +14,11 @@ When a user now accesses either Bastion or a VM directly on its (instance) publi
 
 ![image](/images/bastion-secure-hub-problem.png)
 
-Direct inbound access to a VM is easily fixed with a UDR containing a route for the client's IP address pointing to internet. 
+Direct inbound access from the internet to Bastion is easily fixed by disabling propagation of the default route from the hub, on the VNET Connection. However, this applies to all subnets  in the spoke, meaning that any VMs in the same spoke vnet as Bastion cannot have internet security via the firewall in the hub. 
+
+![image](/images/disable-def-rt-prop.png)
+
+Another solution would be to attach a UDR containing a route for the client's IP address pointing to internet, to the subnet.
 
 ![image](/images/vm-eff-rts-udr.png)
 
