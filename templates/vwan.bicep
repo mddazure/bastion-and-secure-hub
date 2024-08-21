@@ -41,6 +41,29 @@ resource spoke0hub0 'Microsoft.Network/virtualHubs/hubVirtualNetworkConnections@
     enableInternetSecurity: true
   }
 }
+resource hub0ri 'Microsoft.Network/virtualHubs/routingIntent@2023-09-01' ={
+  parent: hub0
+  name: 'hubzerori'
+  properties: {
+    routingPolicies: [
+      {
+        name: 'PublicTraffic'
+        destinations: [
+             'Internet'
+        ]
+        nextHop: hub0fw.id
+      }
+      {
+        name: 'PrivateTraffic'
+        destinations: [
+             'PrivateTraffic'
+        ]
+        nextHop: hub0fw.id
+      }
+    ]
+  }
+}
+
 resource hub1ri 'Microsoft.Network/virtualHubs/routingIntent@2023-09-01' ={
   parent: hub1
   name: 'huboneri'
@@ -51,7 +74,7 @@ resource hub1ri 'Microsoft.Network/virtualHubs/routingIntent@2023-09-01' ={
         destinations: [
              'Internet'
         ]
-        nextHop: hub0fw.id
+        nextHop: hub1fw.id
       }
       {
         name: 'PrivateTraffic'
