@@ -27,7 +27,7 @@ However, Bastion needs direct connectivity to internet from its subnet. To ensur
 :point_right: VWAN Secured Hub configured to secure internet traffic through the hub firewall breaks Azure Bastion.
 
 # The Solution
-Azure Bastion Premium Tier introduces new Session Recording and Private Only features. Bastion Premium is in preview, available in the Azure Early Updates Access Program regions Central US EUAP and East US2 EUAP and accessible through this [Portal flight link](aka.ms/pobpreview).
+Azure Bastion Premium Tier introduces new Session Recording and Private Only features. Bastion Premium is in public preview.
 
 Private Only makes Bastion accessible to clients via a private IP address, taken from the AzureBastionSubnet, only. When this feature is enabled, the Bastion instance does not have a public endpoint.
 
@@ -64,3 +64,35 @@ In the Azure portal, enter the VM's private ip address in the Connect dialog:
 Alternatively, create a shareable link, copy it and paste it into the address bar of a new browser window:
 
 ![images](/images/connect-vm-link.png)
+
+# Lab #
+
+Log in to Azure Cloud Shell at https://shell.azure.com/ and select Bash.
+
+Ensure Azure CLI and extensions are up to date:
+  
+    az upgrade --yes
+  
+If necessary select your target subscription:
+  
+    az account set --subscription <Name or ID of subscription>
+
+Clone the  GitHub repository: 
+
+    git clone https://github.com/mddazure/bastion-and-secure-hub
+
+Change directory:
+
+    cd .\bastion-and-secure-hub\templates
+
+Deploy the template
+
+    az deployment sub create -n bastion --template-file main.bicep -l swedencentral
+
+Follow the instructions above to create a DNAT rule in the firewall policy, and create an entry in the client VM's HOSTS file.
+
+VM credentials:
+
+    username: AzureAdmin
+
+    password: VwanBas-2024

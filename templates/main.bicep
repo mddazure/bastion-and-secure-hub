@@ -1,5 +1,5 @@
 param rgName string = 'vwan-bastion-test'
-param location string = 'centraluseuap'
+param location string = 'swedencentral'
 param adminUsername string = 'AzureAdmin'
 param adminPassword string = 'VwanBas-2024'
 
