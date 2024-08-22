@@ -68,12 +68,13 @@ module spoke1 'spoke.bicep' = {
 module bastion0 'bastion.bicep' = {
   name: 'bastion0'
   scope: vwantestRg
+  dependsOn:[
+    spoke0
+  ]
   params: {
     bastionname: 'bastion0'
-    vnetname: spoke0Name
     location: location
-    tier: 'Premium'
-    privateip: false
+    tier: 'Standard'
     bassubnetid: spoke0.outputs.bassubnetid
   }
 }

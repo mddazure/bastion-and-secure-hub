@@ -1,15 +1,14 @@
 param bastionname string
-param vnetname string
 param location string
 param tier string
-param privateip bool
+param privateip bool = false
 param bassubnetid string
 
 resource bastion 'Microsoft.Network/bastionHosts@2024-01-01' ={
   name: bastionname
   location: location
   sku: {
-    name: 'Premium'
+    name: tier
   }
   properties: {
     scaleUnits: 2
@@ -22,7 +21,6 @@ resource bastion 'Microsoft.Network/bastionHosts@2024-01-01' ={
           subnet: {
             id: bassubnetid
           }
-          privateIPAllocationMethod: 'Static'
           publicIPAddress:{
             id: bastionPublicIp.id
           }
