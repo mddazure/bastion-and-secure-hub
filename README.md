@@ -83,7 +83,7 @@ Clone the  GitHub repository:
 
 Change directory:
 
-    cd .\bastion-and-secure-hub\templates
+    cd ./bastion-and-secure-hub/templates
 
 Deploy the template
 
